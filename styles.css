@@ -1525,3 +1525,34 @@ body.chat-open .chat-panel { opacity: 1; transform: none; pointer-events: auto; 
 @media (max-width: 430px) {
   .pillars, .svc-grid, .event-grid, .coach-posters { gap: 13px; }
 }
+
+/* ============================================================
+   GET ACTIVE KIDS VOUCHER  (added — govt $200 voucher selling point)
+   ============================================================ */
+.voucher__panel {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; gap: 14px; height: 100%;
+  min-height: 300px; padding: clamp(32px, 5vw, 56px);
+  border-radius: var(--radius-card);
+  background: linear-gradient(155deg, var(--color-secondary) 0%, #24506e 100%);
+  color: #fff; box-shadow: var(--shadow-card);
+}
+.voucher__tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.76rem; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+  color: #8FBEE6;
+}
+.voucher__amount {
+  font-family: var(--font-heading); font-weight: 700; line-height: 1; color: #fff;
+  font-size: clamp(3.6rem, 9vw, 5.4rem);
+}
+.voucher__desc { color: rgba(255,255,255,0.84); max-width: 24ch; margin: 0; }
+.voucher__note {
+  margin: 6px 0 0; font-size: 0.8rem; color: var(--color-text-muted);
+}
+.voucher__badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: var(--radius-pill);
+  background: var(--color-primary-soft); color: var(--color-primary-hover);
+  font-size: 0.82rem; font-weight: 600;
+}

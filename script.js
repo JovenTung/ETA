@@ -212,14 +212,21 @@
   if (cForm) {
     cForm.addEventListener('submit', function (e) {
       e.preventDefault();
-      var name = (document.getElementById('cf-name').value || '').trim();
+      // Honeypot: if the hidden "company" field is filled, silently drop the submission (bot).
+      var honeypot = (document.getElementById('cf-company') || {}).value || '';
+      if (honeypot.trim()) { return; }
+      var firstname = (document.getElementById('cf-firstname').value || '').trim();
+      var surname = (document.getElementById('cf-surname').value || '').trim();
+      var name = (firstname + ' ' + surname).trim();
       var email = (document.getElementById('cf-email').value || '').trim();
       var phone = (document.getElementById('cf-phone').value || '').trim();
+      var dob = (document.getElementById('cf-dob').value || '').trim();
       var program = document.getElementById('cf-program').value;
       var message = (document.getElementById('cf-message').value || '').trim();
-      if (!name || !email) { alert('Please add your name and email so we can reply.'); return; }
+      if (!firstname || !surname || !email) { alert('Please add your name and email so we can reply.'); return; }
       var subject = 'Enquiry: ' + program + ', ' + name;
       var body = 'Name: ' + name + '\nEmail: ' + email + '\nPhone: ' + phone +
+        (dob ? '\nDate of birth: ' + dob : '') +
         '\nInterested in: ' + program + '\n\nMessage:\n' + message + '\n';
       var ok = document.getElementById('formOk');
       if (ok) ok.classList.add('show');
