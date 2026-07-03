@@ -94,6 +94,21 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
     reveals.forEach(function (el) { io.observe(el); });
+
+    // Failsafe: on some devices/browsers the initial IntersectionObserver callback
+    // doesn't fire reliably for above-the-fold elements, leaving them stuck at
+    // opacity:0. After load, force-reveal anything already in (or above) the
+    // viewport so important content (e.g. the hero highlight) can never stay hidden.
+    var revealVisible = function () {
+      reveals.forEach(function (el) {
+        if (el.classList.contains('in')) return;
+        if (el.getBoundingClientRect().top < (window.innerHeight || document.documentElement.clientHeight)) {
+          el.classList.add('in');
+        }
+      });
+    };
+    window.addEventListener('load', function () { window.setTimeout(revealVisible, 400); });
+    window.setTimeout(revealVisible, 1500);
   }
 
   /* -------------------- STAT COUNTERS -------------------- */

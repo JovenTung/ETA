@@ -1563,15 +1563,17 @@ body.chat-open .chat-panel { opacity: 1; transform: none; pointer-events: auto; 
   margin-top: 26px; padding: 15px 20px; max-width: 540px;
   border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary);
   border-radius: 14px;
-  background: linear-gradient(100deg, var(--color-primary-soft), rgba(255,255,255,0) 85%);
+  background: var(--color-primary-soft);
   text-decoration: none; color: inherit;
   transition: box-shadow var(--t-base) var(--ease-out), transform var(--t-base) var(--ease-out);
 }
 .hero__highlight:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
 .hero__highlight .medal { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%; background: var(--color-primary); color: #fff; flex-shrink: 0; }
 .hero__highlight .medal svg { width: 24px; height: 24px; }
+/* min-width:0 lets the text shrink and wrap instead of overflowing narrow screens (e.g. S22) */
+.hero__highlight-text { min-width: 0; }
 .hero__highlight b { display: block; font-family: var(--font-heading); color: var(--color-secondary); font-size: 1.02rem; line-height: 1.25; }
-.hero__highlight .sub { display: block; font-size: 0.86rem; color: var(--color-text-muted); margin-top: 3px; }
+.hero__highlight .sub { display: block; font-size: 0.86rem; color: var(--color-text-muted); margin-top: 3px; overflow-wrap: break-word; }
 .hero__highlight .amount { color: var(--color-primary-hover); font-weight: 700; }
 
 /* ===== Get Active provider ID box (under "How it works") ===== */
